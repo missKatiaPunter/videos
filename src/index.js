@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar';
+import VideoList from './components/video_list';
 import config from './config'
 const akey = config.REACT_APP_KEY;
 
@@ -8,14 +10,16 @@ const akey = config.REACT_APP_KEY;
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { videos: akey };
-    console.log(this.state);
+    this.state = { videos: [] };
+    YTSearch({ key: akey, term: 'snowboard' }, videos => {
+      this.setState({ videos });
+    });
   }
   render() {
-    console.log(process.env.REACT_APP_KEY);
     return (
       <div>
         <SearchBar />
+        <VideoList videos={this.state.videos} />
       </div>
     );
   }
