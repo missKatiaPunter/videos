@@ -1,4 +1,5 @@
 import React from 'react';
+import { ListGroup } from 'react-bootstrap';
 import VideoListItem from './video_list_item';
 
 const VideoList = (props) => {
@@ -6,9 +7,9 @@ const VideoList = (props) => {
     return <VideoListItem key={vid.etag} vid={vid} />
   });
   return (
-    <ul className="col-md-4 list-group">
+    <ListGroup className="col-md-4">
       {videoItems}
-    </ul>
+    </ListGroup>
   );
 }
 
