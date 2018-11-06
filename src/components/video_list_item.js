@@ -1,20 +1,19 @@
 import React from 'react';
+import { ListGroupItem, Media } from 'react-bootstrap';
 
 const VideoListItem = ({ vid }) => {
   const thumbUrl = vid.snippet.thumbnails.default.url;
   console.log(thumbUrl);
 
   return (
-    <li className="list-group-item">
-      <div className="video-list media">
-        <div className="media-left">
-          <img className="media-object" src={thumbUrl} />
-        </div>
-        <div className="media-body">
-          <div className="media-heading primary">{vid.snippet.title}</div>
-        </div>
-      </div>
-    </li>
+    <ListGroupItem>
+      <Media>
+        <img className="align-self-start mr-3" src={thumbUrl} />
+        <Media.Body>
+          <Media.Heading>{vid.snippet.title}</Media.Heading>
+        </Media.Body>
+      </Media>
+    </ListGroupItem>
   );
 }
 
